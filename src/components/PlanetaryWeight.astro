@@ -1,0 +1,194 @@
+---
+const planets = [
+  { name: 'Mercury', gravity: 0.38 },
+  { name: 'Venus', gravity: 0.91 },
+  { name: 'Mars', gravity: 0.38 },
+  { name: 'Jupiter', gravity: 2.34 },
+  { name: 'Saturn', gravity: 1.06 },
+  { name: 'Uranus', gravity: 0.92 },
+  { name: 'Neptune', gravity: 1.19 },
+];
+---
+
+<div class="calculator-container">
+  <h1 class="title">Planetary Weight Calculator</h1>
+  <div class="input-section">
+    <label for="earth-weight">Your Weight on Earth (kg):</label>
+    <input type="number" id="earth-weight" min="0" step="0.1" value="70" />
+  </div>
+  
+  <div class="results-grid">
+    {planets.map((planet, index) => (
+      <div class="planet-card" style={`animation-delay: ${index * 0.1}s`}>
+        <h2>{planet.name}</h2>
+        <p class="weight">
+          Weight: <span class="weight-value" data-gravity={planet.gravity}>0</span> kg
+        </p>
+      </div>
+    ))}
+  </div>
+</div>
+
+<script>
+  const earthWeightInput = document.getElementById('earth-weight') as HTMLInputElement;
+  const weightValues = document.querySelectorAll('.weight-value');
+
+  function calculateWeight() {
+    const earthWeight = parseFloat(earthWeightInput.value) || 0;
+    
+    weightValues.forEach((element) => {
+      const gravity = parseFloat(element.getAttribute('data-gravity') || '0');
+      const oldWeight = parseFloat(element.textContent || '0');
+      const newWeight = earthWeight * gravity;
+      
+      // Animate the number change
+      animateValue(element, oldWeight, newWeight, 500);
+    });
+  }
+
+  function animateValue(element: Element, start: number, end: number, duration: number) {
+    const range = end - start;
+    const startTime = performance.now();
+    
+    function update(currentTime: number) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // Easing function for smooth animation
+      const easeProgress = 1 - Math.pow(1 - progress, 3);
+      
+      const currentValue = start + (range * easeProgress);
+      element.textContent = currentValue.toFixed(2);
+      
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      }
+    }
+    
+    requestAnimationFrame(update);
+  }
+
+  earthWeightInput.addEventListener('input', calculateWeight);
+  calculateWeight(); // Initial calculation
+</script>
+
+<style>
+  .calculator-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.8s ease-out;
+  }
+
+  .title {
+    text-align: center;
+    color: #2d3748;
+    margin-bottom: 2rem;
+    animation: slideDown 0.8s ease-out;
+  }
+
+  .input-section {
+    margin-bottom: 2rem;
+    text-align: center;
+    animation: slideDown 0.8s ease-out 0.2s backwards;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #4a5568;
+  }
+
+  input {
+    padding: 0.5rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 0.5rem;
+    font-size: 1.1rem;
+    width: 150px;
+    transition: all 0.3s ease;
+  }
+
+  input:focus {
+    outline: none;
+    border-color: #4299e1;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+  }
+
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .planet-card {
+    background: #f7fafc;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.8s ease-out backwards;
+    border: 2px solid transparent;
+  }
+
+  .planet-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    border-color: #4299e1;
+    background: white;
+  }
+
+  .planet-card h2 {
+    color: #2d3748;
+    margin: 0 0 1rem 0;
+    transition: color 0.3s ease;
+  }
+
+  .planet-card:hover h2 {
+    color: #4299e1;
+  }
+
+  .weight {
+    color: #4a5568;
+    font-size: 1.1rem;
+  }
+
+  .weight-value {
+    font-weight: bold;
+    color: #2b6cb0;
+    transition: color 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

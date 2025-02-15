@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Planetary Weight Calculator</title>
+	</head>
+	<body>
+		<div class="stars"></div>
+		<div class="twinkling"></div>
+		<div class="clouds"></div>
+		<div class="content">
+			<slot />
+		</div>
+	</body>
+</html>
+
+<style>
+	html,
+	body {
+		margin: 0;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(to bottom, #0a192f 0%, #2c5364 100%);
+		overflow-x: hidden;
+	}
+
+	.content {
+		position: relative;
+		z-index: 3;
+		min-height: 100vh;
+		padding: 20px;
+	}
+
+	@keyframes move-stars {
+		from {
+			transform: translateY(0);
+		}
+		to {
+			transform: translateY(-1000px);
+		}
+	}
+
+	@keyframes twinkle {
+		from {
+			background-position: 0 0;
+		}
+		to {
+			background-position: -10000px 5000px;
+		}
+	}
+
+	@keyframes move-clouds {
+		from {
+			transform: translateX(-1000px);
+		}
+		to {
+			transform: translateX(1000px);
+		}
+	}
+
+	.stars {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 200%;
+		background: transparent url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAABHNCSVQICAgIfAhkiAAAAWJJREFUeJzt0kERACAMwLCxf2d9xHCQKvgXZnbPzL6788rA7u4BXDAkYkjEkIghEUMihkQMiRgSMSRiSMSQiCERQyKGRAyJGBIxJGJIxJCIIRFDIoZEDIkYEjEkYkjEkIghEUMihkQMiRgSMSRiSMSQiCERQyKGRAyJGBIxJGJIxJCIIRFDIoZEDIkYEjEkYkjEkIghEUMihkQMiRgSMSRiSMSQiCERQyKGRAyJGBIxJGJIxJCIIRFDIoZEDIkYEjEkYkjEkIghEUMihkQMiRgSMSRiSMSQiCERQyKGRAyJGBIxJGJIxJCIIRFDIoZEDIkYEjEkYkjEkIghEUMihkQMiRgSMSRiSMSQiCERQyKGRAyJGBIxJGJIxJCIIRFDIoZEDIkYEjEkYkjEkIghEUMihkQMiRgSMSRiSMSQiCERQyKGRAyJGBIxJGJIxJCIIRFDIoZEDIkYEjEk8gE0DQqX0Tzn8AAAAABJRU5ErkJggg==') repeat;
+		animation: move-stars 150s linear infinite;
+		z-index: 1;
+	}
+
+	.twinkling {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: transparent url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAWdEVYdENyZWF0aW9uIFRpbWUAMDQvMTIvMTPg8DzCAAACqElEQVR4nO2Z0XHbMBBFHzNpICVcB0/KcAeuIOogqsCuIKrArsB2BVYFUgVRBXYHLsEdPKWDlHA6yA+DkQAQoEQQu+/N7EggCOLi4h4JAHF3d0dKjsZxPAIeAQE+A6fAKZC7RX6B38Aa+AV8B5bAMo7jz9TXvDfF4DiOJ8AccMBXS7H/gAVwG8fxZ6p+JDEkGjEDboAPS9p9AK6B2ziOqxT9aW1INGIOLFq2sQIu4zh+b9uXVoZEI74B922NqOEeuGxjTGNDoiEvwPmhg9+Tc+C5qTGNDNmzIVWcNTFmtEFDNmQMQ0YzZIyGjGLImAYkNySlIakMSW1ISkOSGZLDkBSG5DIktSE5DUlpSG5DUhmynVNaZDPktGEb5w3rjsZmzj0FNrWxRVVhW0NmwLJhG8tYJ6chgNuQVYM6KwdcxTpZDQHchlQtJeoCF3Xr5DYEcBvyDbjZs84NcF1VkIUhgNuQT8AX4HfF8d/AF+BzXQU5DUkxhxwDN8Bf4EJ+PQHn7LakjoDLOI5f6k6WxRDAX1NmwJH8yt3vS+AuWvGsqHEcx7/2nTSLIYDbkHNgWlJ0Gv0/qWvEbYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjTYYjT8Q8Peho7lVGJlQAAAABJRU5ErkJggg==') repeat;
+		animation: twinkle 200s linear infinite;
+		z-index: 2;
+	}
+
+	.clouds {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(to bottom, 
+			rgba(255,255,255,0.05) 0%,
+			transparent 100%);
+		filter: blur(3px);
+		animation: move-clouds 120s linear infinite;
+		z-index: 2;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.stars,
+		.twinkling,
+		.clouds {
+			animation: none;
+		}
+	}
+</style>
