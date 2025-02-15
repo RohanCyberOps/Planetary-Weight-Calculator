@@ -1,48 +1,61 @@
-# Astro Starter Kit: Basics
 
-```sh
-npm create astro@latest -- --template basics
-```
+---
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+# 🌍 **Planetary Weight Generator** 🚀  
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+A modern, interactive web app built with **React, Vite, TypeScript, and Astro** to calculate weight on different planets based on gravitational differences.  
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+## 📌 **Features**  
+✅ Enter weight on Earth and get corresponding values for other planets  
+✅ Fast and optimized using **Vite**  
+✅ Type-safe with **TypeScript**  
+✅ **Astro** integration for static site generation (SSG)  
+✅ Responsive and user-friendly UI  
 
-## 🚀 Project Structure
+## 🛠 **Tech Stack**  
+- ⚛️ **React** – Component-based UI  
+- ⚡ **Vite** – Fast development server  
+- 🔷 **TypeScript** – Type safety  
+- 🪐 **Astro** – Static site generation  
 
-Inside of your Astro project, you'll see the following folders and files:
+## 🚀 **Installation & Setup**  
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+1. Clone the repository:  
+   ```bash
+   git clone https://github.com/RohanCyberOps/planetary-weight-generator.git
+   cd planetary-weight-generator
+   ```
+2. Install dependencies:  
+   ```bash
+   npm install
+   ```
+3. Start the development server:  
+   ```bash
+   npm run dev
+   ```
+4. Open the app in your browser at `http://localhost:5173/`  
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## 🌎 **Gravity Values Used**  
+| Planet | Gravity (m/s²) |  
+|--------|-------------|  
+| Mercury | 3.7 |  
+| Venus | 8.87 |  
+| Earth | 9.81 |  
+| Mars | 3.71 |  
+| Jupiter | 24.79 |  
+| Saturn | 10.44 |  
+| Uranus | 8.69 |  
+| Neptune | 11.15 |  
 
-## 🧞 Commands
+## 🎯 **Planned Features**  
+🔹 Dark mode support  
+🔹 Animations with Framer Motion  
+🔹 Support for moons and exoplanets  
 
-All commands are run from the root of the project, from a terminal:
+## 🤝 **Contributing**  
+Pull requests are welcome! Fork the repo and create a PR.  
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## 📜 **License**  
+This project is open-source under the **MIT License**.  
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+---
